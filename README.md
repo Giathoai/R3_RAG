@@ -11,8 +11,6 @@
 
 This repository is a **re-implementation** of the R3-RAG framework, specifically optimized to train **Small Language Models (SLMs)** — particularly Qwen 0.5B — to perform complex, multi-step reasoning. By combining **Supervised Fine-Tuning (SFT)** and **Reinforcement Learning via PPO**, the model learns to analyze problems, generate precise search queries, and verify retrieved information before producing a final answer.
 
-> 🔬 *This project is part of a research evaluation on the performance of deep learning models on low-energy edge devices.*
-
 ---
 
 ## 🌟 Key Features
