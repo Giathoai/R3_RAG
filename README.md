@@ -5,7 +5,6 @@
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=flat-square&logo=python)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-EE4C2C?style=flat-square&logo=pytorch)](https://pytorch.org/)
 [![Model](https://img.shields.io/badge/Base%20Model-Qwen2.5--0.5B-purple?style=flat-square)](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct)
-[![VRAM](https://img.shields.io/badge/Min%20VRAM-4GB-green?style=flat-square&logo=nvidia)](https://www.nvidia.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
 ---
@@ -21,8 +20,7 @@ This repository is a **re-implementation** of the R3-RAG framework, specifically
 | Feature | Description |
 |---|---|
 | 🔗 **Multi-hop Reasoning** | Decomposes complex questions into sequential or parallel sub-tasks |
-| ⚖️ **LLM-as-a-Judge** | Integrates Gemini 1.5 Flash for high-quality feedback on reasoning coherence and retrieval relevance |
-| 💾 **Low VRAM Optimization** | Tailored for consumer-grade GPUs with as little as **4GB VRAM** |
+| ⚖️ **LLM-as-a-Judge** | Integrates Gemini 2.5 Flash for high-quality feedback on reasoning coherence and retrieval relevance |
 | 📐 **Structured Output** | Strict adherence to the R3 format: `Analysis` → `Query` → `Documents` → `Answer` |
 
 ---
@@ -32,7 +30,8 @@ This repository is a **re-implementation** of the R3-RAG framework, specifically
 ```
 R3/
 ├── data/
-│   └── processed/          # HotpotQA and pre-processed SFT datasets
+│   ├── processed/          # pre-processed PPO datasets
+│   └── trajectories/       # pre-processed SFT datasets
 ├── models/                 # Saved checkpoints for SFT and PPO stages
 ├── prompts/                # Prompt templates (init_prompt.txt, step_prompt.txt)
 ├── src/
@@ -41,7 +40,8 @@ R3/
 │   ├── reward_functions.py # Reward logic and Gemini API integration
 │   ├── retriever.py        # Vector search implementation (E5 / FAISS)
 │   └── config.py           # Model and hyperparameter configurations
-└── README.md
+├── README.md
+└── requirements.txt
 ```
 
 ---
@@ -119,7 +119,7 @@ source myenv/bin/activate
 **3. Install dependencies:**
 
 ```bash
-pip install torch transformers trl peft accelerate bitsandbytes langchain-google-genai
+pip install -r requirements.txt
 ```
 
 **4. Set up your Google API Key** for Gemini-based judging:
@@ -151,7 +151,7 @@ export GOOGLE_API_KEY=your_api_key_here
 - **Base Model:** [`Qwen/Qwen2.5-0.5B-Instruct`](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct)
 - **Dataset:** [HotpotQA](https://hotpotqa.github.io/)
 - **Retriever:** [E5 Embeddings](https://huggingface.co/intfloat/e5-base) + [FAISS](https://github.com/facebookresearch/faiss)
-- **Judge Model:** [Gemini 1.5 Flash](https://deepmind.google/technologies/gemini/flash/)
+- **Judge Model:** [Gemini 2.5 Flash](https://deepmind.google/technologies/gemini/flash/)
 
 ---
 
