@@ -1,0 +1,14 @@
+langchain
+langchain-huggingface
+langchain-community
+langchain-google-genai
+faiss-cpu
+transformers
+sentence-transformers
+peft
+trl==0.11.4
+datasets
+torch
+accelerate
+rich
+bitsandbytes
