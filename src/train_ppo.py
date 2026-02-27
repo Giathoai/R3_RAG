@@ -4,7 +4,7 @@ import torch
 import re
 import json
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyB6BvVguDOnks83n47KJHnl7xl94L4vMDo"
+os.environ["GOOGLE_API_KEY"] = ""
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
